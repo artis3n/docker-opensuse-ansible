@@ -17,11 +17,12 @@ jobs:
         with:
           recursive: true
           ignore: DL3007,DL3037,DL3013,DL3035
-  
+
   test:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         distro:
           - leap
@@ -32,10 +33,10 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      
+
       - name: Install Goss
         uses: e1himself/goss-installation-action@v1.1.0
-      
+
       - name: Build and Export
         uses: docker/build-push-action@v3
         with:
@@ -46,6 +47,6 @@ jobs:
           tags: "artis3n/docker-opensuse-${{ matrix.distro }}-ansible:test"
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      
+
       - name: Test the Docker image
         run: dgoss run -it --rm --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro artis3n/docker-opensuse-${{ matrix.distro }}-ansible:test
