@@ -6,15 +6,16 @@ on:
     branches:
       - main
 
-strategy:
-  matrix:
-    distro:
-      - leap
-      - tumbleweed
-
 jobs:
   lint:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        distro:
+          - leap
+          - tumbleweed
+    
     defaults:
       run:
         working-directory: ${{ matrix.distro }}
@@ -29,6 +30,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        distro:
+          - leap
+          - tumbleweed
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.distro }}
+
     steps:
       - uses: actions/checkout@v3
 
@@ -40,7 +51,6 @@ jobs:
       
       - name: Build and Export
         uses: docker/build-push-action@v3
-        working-directory: ${{ matrix.distro }}
         with:
           context: .
           platforms: linux/amd64

@@ -6,6 +6,7 @@ install:
 
 .PHONY: lint
 lint:
+	pre-commit run -a
 	cd leap && make lint
 	cd tumbleweed && make lint
 

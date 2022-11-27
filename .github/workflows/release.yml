@@ -7,15 +7,16 @@ on:
     # weekly - on Sundays
     - cron: 0 9 * * 0
 
-strategy:
-  matrix:
-    distro:
-      - leap
-      - tumbleweed
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        distro:
+          - leap
+          - tumbleweed
+    
     defaults:
       run:
         working-directory: ${{ matrix.distro }}
