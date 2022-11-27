@@ -17,10 +17,6 @@ jobs:
           - leap
           - tumbleweed
     
-    defaults:
-      run:
-        working-directory: ${{ matrix.distro }}
-    
     steps:
       - uses: actions/checkout@v3
 
@@ -50,7 +46,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ${{ matrix.distro }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}

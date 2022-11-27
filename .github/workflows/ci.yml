@@ -27,10 +27,6 @@ jobs:
           - leap
           - tumbleweed
 
-    defaults:
-      run:
-        working-directory: ${{ matrix.distro }}
-
     steps:
       - uses: actions/checkout@v3
 
