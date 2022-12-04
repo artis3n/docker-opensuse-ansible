@@ -11,7 +11,7 @@ RUN zypper --non-interactive dup && \
   # Install systemd && \
   zypper --non-interactive install systemd && \
   # Install utilities needed to test Ansible
-  zypper --non-interactive install ca-certificates net-tools python3 python3-pip python3-wheel python3-setuptools sudo system-group-wheel && \
+  zypper --non-interactive install ca-certificates net-tools which python3 python3-pip python3-wheel python3-setuptools sudo system-group-wheel && \
   # Strip down systemd
   rm -f /usr/lib/systemd/system/multi-user.target.wants/* && \
   rm -f /etc/systemd/system/*.wants/* && \
