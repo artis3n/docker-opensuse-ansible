@@ -23,9 +23,9 @@ RUN zypper --non-interactive dup && \
   # Clean (purge) the repo cache
   zypper --non-interactive clean --all
 
-RUN /usr/bin/python3 -m pip install -U pip setuptools wheel \
+RUN /usr/bin/python3 -m pip install --break-system-packages -U pip setuptools wheel \
   && /usr/bin/pip3 --version \
-  && /usr/bin/pip3 install --no-cache-dir $pip_packages
+  && /usr/bin/pip3 install --no-cache-dir --break-system-packages $pip_packages
 
 # Without this, init won't start the enabled services. Starting the services
 # fails with one of:
