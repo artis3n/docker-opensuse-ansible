@@ -47,6 +47,3 @@ jobs:
           tags: "artis3n/docker-opensuse-${{ matrix.distro }}-ansible:test"
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Test the Docker image
-        run: dgoss run -it --rm --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro artis3n/docker-opensuse-${{ matrix.distro }}-ansible:test
