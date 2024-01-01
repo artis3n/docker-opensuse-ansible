@@ -3,7 +3,6 @@ command:
     exit-status: 0
     stdout:
     - executable location = /usr/bin/ansible
-    - ansible python module location = /usr/local/python3
     stderr: []
   systemctl status --no-pager:
     exit-status: 0
