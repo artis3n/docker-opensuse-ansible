@@ -6,12 +6,12 @@ build:
 
 .PHONY: test
 test: build
-	dgoss run -it --rm --privileged --cgroupns=host --volume=/sys/fs/cgroup:/sys/fs/cgroup:rw artis3n/docker-opensuse-leap-ansible:$${TAG:-test}
+	cd .. && dgoss run -it --rm --privileged --cgroupns=host --volume=/sys/fs/cgroup:/sys/fs/cgroup:rw artis3n/docker-opensuse-leap-ansible:$${TAG:-test}
 	# CI=true make size
 
 .PHONY: test-edit
 test-edit: build
-	dgoss edit -it --rm --privileged --cgroupns=host --volume=/sys/fs/cgroup:/sys/fs/cgroup:rw artis3n/docker-opensuse-leap-ansible:$${TAG:-test}
+	cd .. && dgoss edit -it --rm --privileged --cgroupns=host --volume=/sys/fs/cgroup:/sys/fs/cgroup:rw artis3n/docker-opensuse-leap-ansible:$${TAG:-test}
 
 .PHONY: size
 size: build
