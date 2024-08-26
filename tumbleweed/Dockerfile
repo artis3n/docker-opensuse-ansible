@@ -25,7 +25,8 @@ RUN zypper --non-interactive dup && \
 
 RUN /usr/bin/python3 -m pip install --break-system-packages -U pip setuptools wheel \
   && /usr/local/bin/pip3 --version \
-  && /usr/local/bin/pip3 install --no-cache-dir --break-system-packages $pip_packages
+  && /usr/local/bin/pip3 install --no-cache-dir --break-system-packages $pip_packages \
+  && ln -s /usr/local/bin/ansible /usr/bin/ansible
 
 # Without this, init won't start the enabled services. Starting the services
 # fails with one of:
