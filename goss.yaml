@@ -2,7 +2,7 @@ command:
   ansible --version:
     exit-status: 0
     stdout:
-    - executable location = /usr/bin/ansible
+    - executable location = /usr/local/bin/ansible
     stderr: []
   systemctl status --no-pager:
     exit-status: 0
